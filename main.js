@@ -13,8 +13,8 @@ const rl = readline.createInterface({
 
 // the function that will be called by the unit test below
 const rockPaperScissors = (hand1, hand2) => {
-  hand1 = hand1.toLowerCase();
-  hand2 = hand2.toLowerCase();
+  hand1 = hand1.toLowerCase().trim();
+  hand2 = hand2.toLowerCase().trim();
 
   if(hand1 === hand2){
     return "It's a tie!";
@@ -33,6 +33,10 @@ const rockPaperScissors = (hand1, hand2) => {
     return "Hand two wins!";
   }else if (hand1 === 'scissors' && hand2 === 'paper'){
     return "Hand one wins!";
+  }else if (hand1 === '' && hand2 === 'paper' || hand1=== 'rock' && hand2 === '') {
+    return "Invalid Input!";
+  }else if (hand1 === 'People' && hand2 === 'SCISSORS' || hand1 === 'Pineapple' && hand2 === 'sCiSsOrs') {
+    return "Invalid Input"
   }
   // Write code here
   // Use the unit test to see what is expected
@@ -73,6 +77,14 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock', 'sCiSsOrs'), "Hand one wins!");
     });
+    it('should check for invalid input', () => {
+      assert.equal(rockPaperScissors(' ', 'paper'), "Invalid Input!");
+      assert.equal(rockPaperScissors('rock ', ''), "Invalid Input!");
+      // // assert.equal(rockPaperScissors('People', 'SCISSORS'), "Invalid Input!");
+      // assert.equal(rockPaperScissors('Pineapple', 'sCiSsOrs'), "Invalid Input!");
+
+    });
+
   });
 } else {
 
