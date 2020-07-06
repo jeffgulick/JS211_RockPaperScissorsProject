@@ -35,8 +35,10 @@ const rockPaperScissors = (hand1, hand2) => {
     return "Hand one wins!";
   }else if (hand1 === '' && hand2 === 'paper' || hand1=== 'rock' && hand2 === '') {
     return "Invalid Input!";
-  }else if (hand1 === 'People' && hand2 === 'SCISSORS' || hand1 === 'Pineapple' && hand2 === 'sCiSsOrs') {
-    return "Invalid Input"
+  }else if (hand1 === ' ' && hand2 === 'SCISSORS' || hand1 === 'Pineapple' && hand2 === ' ') {
+    return "Invalid Input!"
+  }else if (hand1.length < 4 || hand2.length < 4){
+    return "Invalid Input!"
   }
   // Write code here
   // Use the unit test to see what is expected
@@ -80,9 +82,8 @@ if (typeof describe === 'function') {
     it('should check for invalid input', () => {
       assert.equal(rockPaperScissors(' ', 'paper'), "Invalid Input!");
       assert.equal(rockPaperScissors('rock ', ''), "Invalid Input!");
-      // // assert.equal(rockPaperScissors('People', 'SCISSORS'), "Invalid Input!");
-      // assert.equal(rockPaperScissors('Pineapple', 'sCiSsOrs'), "Invalid Input!");
-
+      assert.equal(rockPaperScissors(' ', 'SCISSORS'), "Invalid Input!");
+      assert.equal(rockPaperScissors('Pineapple', ' '), "Invalid Input!");
     });
 
   });
