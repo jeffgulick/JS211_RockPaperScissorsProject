@@ -16,9 +16,9 @@ const rockPaperScissors = (hand1, hand2) => {
   hand1 = hand1.toLowerCase().trim();
   hand2 = hand2.toLowerCase().trim();
 
-  if(hand1 === hand2){
+  if(hand1 === hand2 && hand1.length >= 4 || !hand2.length >= 4){
     return "It's a tie!";
-
+  
   }else if (hand1=== 'rock' && hand2=== 'paper'){
     return "Hand two wins!";
   }else if (hand1 === 'rock' && hand2 === 'scissors'){
@@ -37,7 +37,8 @@ const rockPaperScissors = (hand1, hand2) => {
     return "Invalid Input!";
   }else if (hand1 === ' ' && hand2 === 'SCISSORS' || hand1 === 'Pineapple' && hand2 === ' ') {
     return "Invalid Input!"
-  }else if (hand1.length < 4 || hand2.length < 4){
+  }
+  else if (hand1.length < 4 || hand2.length < 4){
     return "Invalid Input!"
   }
   // Write code here
